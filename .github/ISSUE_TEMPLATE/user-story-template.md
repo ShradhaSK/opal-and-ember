@@ -2,7 +2,7 @@
 name: User Story Template
 about: Custom template for User Stories
 title: ''
-labels: ''
+labels: User Story
 assignees: ShradhaSK
 
 ---

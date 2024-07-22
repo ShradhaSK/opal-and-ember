@@ -1,0 +1,61 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="container-fluid food-menu">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-8 mt-5 mb-5">
+            <h2 class="text-center text-decoration-underline">Food Menu</h2>
+        </div>
+        {% if appetizers %}
+        <h2 class="mb-5">Appetizers</h2>
+        <div>
+            {% for item in appetizers %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <span>{{ item.name }}</span>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+
+        {% if main_courses %}
+        <h2 class="mb-5">Main Course</h2>
+        <div>
+            {% for item in main_courses %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <span>{{ item.name }}</span>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+
+        {% if desserts %}
+        <h2 class="mb-5">Desserts</h2>
+        <div>
+            {% for item in desserts %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <span>{{ item.name }}</span>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{%endblock%}

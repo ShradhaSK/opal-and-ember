@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container col-md-3 pt-3">
+      <div class="row card rounded booking-card">
+        <div class="card-body">
+          <h3 class="card-title">Booking Confirmation</h3><br>
+          <h6 class="card-subtitle mb-2 text-bold">Thank you for booking with us! Your reservation is confirmed</h6><br>
+          <p class="card-text">What would you like to do next?</p>
+          <button class="btn confirmation-card">
+            <a href="{% url 'food_menu' %}" class="card-link">See the Menu</a>
+          </button>
+          <button class="btn confirmation-card">
+            <a href="{% url 'bookings_list' %}" class="card-link">See your Reservations</a>
+          </button>
+        </div>
+      </div> 
+</div>
+{% endblock %}

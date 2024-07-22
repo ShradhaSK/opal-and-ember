@@ -1,0 +1,152 @@
+{% load static %}
+
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <title>Opal and Ember</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Welcome to Opal and Ember, where great food meets vibrant atmosphere! Join us for good times and delicious flavors" />
+    <meta name="keywords"
+    content="restaurant, bar, grill, table booking, opal and ember, appetizers, main course, desserts, apertif, wine, beer, cocktails">
+    <meta name="author" content="Arron Beale">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/c64fd77393.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+
+</head>
+
+<body class="d-flex flex-column h-100 main-bg background-pattern">
+
+    <!-- Navigation -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <div class="container-fluid">            
+            <a class="logo mr-7 ml-5" href="{% url 'home' %}"><img src="{% static 'images/restaurant_logo.png' %}" style="height: 65px; " alt="name-logo" aria-label="Go to the home page"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Menus
+                          </a>
+                          <!-- Menu dropdown with food and drink menu links-->
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'food_menu' %}">Food Menu</a></li>
+                            <li><a class="dropdown-item" href="{% url 'drinks_menu' %}">Drinks Menu</a></li>
+                          </ul>
+                        </div>
+                    </li>
+                    {% if user.is_authenticated %}                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'booking' %}">Book a Table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bookings_list' %}">My Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page"
+                            href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>            
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div id="message-container">
+        {% for message in messages %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <main class="flex-shrink-0">
+
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <!-- Left Column: Address, Phone, Email -->
+                <div class="col-md-4 text-center">
+                    <h5><strong>Contact Information</strong></h5>
+                    <p>Sonnenallee 113, Berlin</p>
+                    <p>Phone: +49 155 10686794</p>
+                    <p>Email: info@opalandember.com</p>
+                </div>
+    
+                <!-- Middle Column: Opening Times -->
+                <div class="col-md-4 text-center">
+                    <h5><strong>Opening Hours</strong></h5>
+                    <p>Monday - Sunday: </p>
+                    <p>11.00am - 3.30pm</p>
+                    <p>7pm - 10.30pm</p>
+                </div>
+    
+                <!-- Right Column: Social Media Links -->
+                <div class="col-md-4 text-center">
+                    <h5><strong>Follow Us</strong></h5>
+                    <div class="footer-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="facebook link"><i class="fab fa-facebook-f"></i></a>                        
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="instagram link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p>Copyright &copy;<span id="copyright"></span> Shradha Kallaje</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+
+    <!-- Script -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

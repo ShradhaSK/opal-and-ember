@@ -1,0 +1,130 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<div class="container-fluid food-menu">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-8 mt-5 mb-5">
+            <h2 class="text-center text-decoration-underline">Drinks Menu</h2>
+        </div>
+        {% if tap_beers %}
+        <h2 class="mb-5">Beers on Tap</h2>
+        <div>
+            {% for item in tap_beers %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+
+        {% if bottle_beers %}
+        <h2 class="mb-5">Bottled Beers</h2>
+        <div>
+            {% for item in bottle_beers %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+
+        {% if whiskeys %}
+        <h2 class="mb-5">Whiskey</h2>
+        <div>
+            {% for item in whiskeys %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+    </div>
+
+    {% if cocktails %}
+        <h2 class="mb-5">Our Signature Cocktails</h2>
+        <div>
+            {% for item in cocktails %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+
+        {% if apertifs %}
+        <h2 class="mb-5">Apertifs</h2>
+        <div>
+            {% for item in apertifs %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+
+        {% if wines %}
+        <h2 class="mb-5">Wines from Around the World</h2>
+        <div>
+            {% for item in wines %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div><hr>
+        {% endif %}
+
+        {% if alcohol_free %}
+        <h2 class="mb-5">Alcohol-free Beverages</h2>
+        <div>
+            {% for item in alcohol_free %}
+            <ul>
+                <li class="menu-item">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <span>&euro;{{ item.price }}</span>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+</div>
+
+{%endblock%}

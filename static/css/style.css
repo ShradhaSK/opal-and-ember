@@ -1,0 +1,202 @@
+/*------ Global Settings ------*/
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(242, 241, 237);
+    font-weight: bold;
+}
+
+.dropdown-item {
+    color: rgb(242, 241, 237);
+}
+
+.dropdown-item:hover {
+    background-color: rgb(139, 137, 137);
+}
+
+a:hover {
+    color: rgb(157, 155, 155)
+}
+
+p {
+    margin-bottom: 0.4em;
+}
+
+.background-pattern {
+    background-image: url(/static/images/background.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: repeat;
+    opacity: 0.9;
+    width: 100%;
+    z-index: -1;
+}
+
+.btn {
+    font-size: 1em;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #FFD700; /* Gold color for divider */
+    margin: 20px 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+/*------ Body ------*/
+
+body {
+    color: antiquewhite;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*------ Navbar ------*/
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+    font-size: 1.3rem;
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.hero-image {
+    background-image: url(/static/images/restaurant_home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #FFD700;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+    color: grey
+}
+
+.coloured-navbar-content .navbar-toggler .navbar-toggler-icon {
+    color: black;
+}
+
+/*------ Footer ------*/
+
+.footer {
+    color: #FFD700;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.footer .footer-icons a:hover {
+    color: grey
+}
+
+.footer .footer-icons a {
+    font-size: 2em;
+    line-height: 1.5em;
+    color: #FFD700;
+    margin-right: 10px;
+}
+
+/*------ Menu Page ------*/
+
+.food-menu {
+    color: #FFD700; /* Gold color */
+    text-shadow: 2px 2px 4px #000; /* Enhanced shadow for readability */
+    margin-bottom: 30px;
+}
+
+.menu-category {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.menu-category .category {
+    padding-left: 33px;
+    font-weight: 700;
+}
+
+.menu-item span {
+    font-weight: bold;
+}
+
+.menu-price {
+    font-weight: bold;
+}
+
+.menu-category hr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.container .menu-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.menu-item {
+    list-style: none;
+    /* Remove bullets */
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+    /* Align name and price */
+    border-bottom: 2px solid #ddd;
+    /* Add a border to create separation */
+    margin-bottom: 5px;
+    /* Adjust the margin for spacing */
+    padding-bottom: 10px;
+    /* Adjust padding for spacing */
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+    /* Remove border for the last item */
+}
+
+/* Booking Form */
+
+.booking-card {
+    color: rgb(242, 241, 237);
+    margin: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.reservations-card {
+    background-color: rgba(215, 215, 219, 0.3);
+    color: rgb(242, 241, 237);;
+    z-index: 1;
+}
+
+.confirmation-card {
+    border: 1px solid antiquewhite;
+}
+
+/* User login, logout, signup */
+
+#signup-form, #login-form, #logout-confirm {
+    color: rgb(242, 241, 237);
+}
+
+.btn-signup, .btn-success, #hint_id_password1  {
+    color: rgb(242, 241, 237);
+    border-color: #B8C4BB;
+    background-color: rgba(0, 0, 0, 0.1);
+}

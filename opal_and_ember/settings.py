@@ -74,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'opal_and_ember.urls'
@@ -110,6 +111,12 @@ DATABASES = {
 # DATABASES = {
 #     'default':  dj_database_url.parse(os.environ.get("DATABASE_URL"))
 # }
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net",
+    "https://*.herokuapp.com"
+]
 
 
 # Password validation

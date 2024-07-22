@@ -4,6 +4,18 @@
 <div class="container">
     <h4 class="stroke col-md-3 mt-3 text-bold justify-content-center" style="color: #FFD700;">Your Reservations</h4>
     <div class="row justify-content-center">
+        {% if reservations|length == 0 %}
+        <div class="col-md-5 mt-5 text-center card rounded booking-card justify-content-center">
+            <div class="card-body mt-2 mb-2">
+                <h4 class="card-title">No Available Bookings</h4><br>
+                <h6 class="card-subtitle mb-2 text-bold">You don't have any upcoming reservations.</h6><br>
+                <p class="card-text">How about we change that?</p>
+                <button class="btn confirmation-card">
+                    <a href="{% url 'booking' %}" class="card-link">Book a Slot</a>
+                </button>
+            </div>
+        </div>
+        {% else %}
         {% for booking in reservations %}
         <div class="col-md-5 m-2 text-center">
             <div class="card rounded mb-5 reservations-card">
@@ -12,7 +24,7 @@
                     <h6 class="card-subtitle mb-2">{{ booking.booking_date }} at {{ booking.booking_timeslot }}</h6>
                     <div class='card-text'>
                         <p>Number of Guests: {{ booking.guests_count }}</p>
-                        <p>Notes: {{ booking.notes }}</p>                                                     
+                        <p>Notes: {{ booking.notes }}</p>
                     </div>
                     <a href="{% url 'edit_booking' booking.id %}" class="btn btn-success">Edit</a>
                     <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Cancel</a>
@@ -20,19 +32,8 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
-    {% if not booking.booking_name %}
-    <div class="col-md-5 m-2 text-center card rounded booking-card justify-content-center">
-        <div class="card-body">
-            <h4 class="card-title">No Available Bookings</h4><br>
-            <h6 class="card-subtitle mb-2 text-bold">You don't have any upcoming reservations.</h6><br>
-            <p class="card-text">How about we change that?</p>
-            <button class="btn confirmation-card">
-              <a href="{% url 'booking' %}" class="card-link">Book a Slot</a>
-            </button>
-        </div>
-    </div>
-    {% endif %}
 </div>
 {% if is_paginated %}
 <nav aria-label="Page navigation">
@@ -48,5 +49,5 @@
         {% endif %}
     </ul>
 </nav>
-  {% endif %}
+{% endif %}
 {%endblock%}

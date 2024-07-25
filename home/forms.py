@@ -3,6 +3,7 @@ from datetime import datetime
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+import pytz
 from .models import Booking
 
 
@@ -33,12 +34,20 @@ class TableBookingForm(forms.ModelForm):
             booking_datetime = datetime.combine(booking_date, booking_time)
             booking_datetime_aware = timezone.make_aware(
                 booking_datetime, timezone.get_current_timezone())
-        except TypeError as exc:
+        except (TypeError, ValueError) as exc:
             raise ValidationError("Invalid date or time format.") from exc
 
         current_datetime = timezone.now()
 
-        if booking_datetime_aware < current_datetime:
+        # Convert current UTC time to CET
+        cet_timezone = pytz.timezone('Europe/Berlin')
+        current_datetime_cet = current_datetime.astimezone(cet_timezone)
+
+        # Debugging information (remove in production)
+        print(f"Booking DateTime (aware): {booking_datetime_aware}")
+        print(f"Current DateTime (aware): {current_datetime}")
+
+        if booking_datetime_aware <= current_datetime_cet:
             raise ValidationError(
                 "Please select a date and time in the future.")
         return cleaned_data

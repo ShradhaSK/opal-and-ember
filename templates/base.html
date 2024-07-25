@@ -9,7 +9,7 @@
 
 <head>
     <title>Opal and Ember</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="static/images/favicon.ico" type="image/x-icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Welcome to Opal and Ember, where great food meets vibrant atmosphere! Join us for good times and delicious flavors" />
@@ -45,7 +45,7 @@
     <!-- Navigation -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-light">
         <div class="container-fluid">            
-            <a class="logo mr-7 ml-5" href="{% url 'home' %}"><img src="{% static 'images/restaurant_logo.png' %}" style="height: 65px; " alt="name-logo" aria-label="Go to the home page"></a>
+            <a class="logo mr-7 ml-5" href="{% url 'home' %}"><img src="{% static 'images/restaurant_logo.png' %}" style="height: 95px; width: 100%; " alt="name-logo" aria-label="Go to the home page"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -68,23 +68,26 @@
                           </ul>
                         </div>
                     </li>
-                    {% if user.is_authenticated %}                    
+                {% if user.is_authenticated %}                    
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'booking' %}">Book a Table</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'bookings_list' %}">My Bookings</a>
                     </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>

@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.views import generic, View
 from .models import Booking, FoodMenuItem, DrinksMenuItem
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils import timezone
 
 # Import form for the Booking model
@@ -149,7 +149,7 @@ class EditBookingView(UpdateView):
 
 # Deletes the booking the user wishes to cancel
 
-class DeleteBookingView(View):
+class DeleteBookingView(DeleteView):
     """
     Deletes the selected booking by its id
     """
@@ -175,7 +175,7 @@ class DeleteBookingView(View):
         reservation.delete()
         messages.success(
                 request, "Booking Canceled")
-        return redirect('bookings_list')  # Red. to the reservations list
+        return redirect('bookings_list')  # Redirect to the reservations list
 
 
 class ConfirmationView(View):

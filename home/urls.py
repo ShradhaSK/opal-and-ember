@@ -12,7 +12,7 @@ urlpatterns = [
         name='bookings_list'
     ),
     path(
-        'edit_booking/<int:id>',
+        'edit_booking/<int:pk>',
         views.EditBookingView.as_view(),
         name='edit_booking'
     ),
